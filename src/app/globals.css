@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #0A0E1A;
+  --bg-alt: #F5F5F5;
+  --accent: #CCFF00;
+  --text-light: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-muted: #B0B0B0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-light);
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #CCFF00;
+  color: #0A0E1A;
+}
