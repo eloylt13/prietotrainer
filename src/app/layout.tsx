@@ -9,24 +9,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Momentum Coach | Demo de Landing para Entrenador Personal",
+  title: "Juanma Prieto | Entrenador Personal en Tavernes de la Valldigna",
   description:
-    "Landing demo para entrenador personal con enfoque premium: quiz inicial, propuesta de valor clara, servicios presencial y online, prueba social, FAQ y formulario de captación.",
+    "Entrenamiento personalizado + nutrición + seguimiento. Resultados entrenando solo 2 días/semana. Presencial en Tavernes de la Valldigna u Online con seguimiento.",
   keywords: [
-    "landing entrenador personal",
-    "web entrenador personal",
-    "demo landing fitness",
-    "personal trainer landing page",
+    "entrenador personal Tavernes de la Valldigna",
     "entrenador personal online",
-    "captacion de leads fitness",
-    "landing page entrenador personal",
+    "nutricionista deportivo Tavernes",
+    "entrenador personal Gandía",
+    "entrenador personal la Safor",
+    "ganar músculo perder grasa",
+    "entrenamiento personalizado",
   ],
   openGraph: {
-    title: "Momentum Coach | Demo de Landing para Entrenador Personal",
+    title: "Juanma Prieto | Entrenador Personal en Tavernes de la Valldigna",
     description:
-      "Demo genérica de landing page para entrenador personal con diseño premium y enfoque de captación.",
+      "Resultados entrenando solo 2 días/semana. Entrenamiento + nutrición + seguimiento personalizado.",
     type: "website",
     locale: "es_ES",
+  },
+  other: {
+    "google-site-verification": "6Cr92jGfY8D6cZX4sdEC1v1vECb_mgjBy8Jd9qoUfI4",
   },
 };
 
