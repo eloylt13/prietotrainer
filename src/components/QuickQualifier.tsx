@@ -1,16 +1,6 @@
 "use client";
 import { useState } from "react";
 
-const colors = {
-  bg: "#0F1115",
-  bgAlt: "#11151B",
-  card: "#171B22",
-  border: "#2E3643",
-  text: "#F5F7FA",
-  textMuted: "#B8C0CC",
-  accent: "#C8A45D",
-};
-
 const steps = [
   {
     key: "objetivo",
@@ -26,8 +16,8 @@ const steps = [
     key: "modalidad",
     title: "¿Cómo prefieres entrenar?",
     options: [
-      { id: "presencial", label: "Presencial", desc: "Acompañamiento directo y trabajo adaptado a tu caso." },
-      { id: "online", label: "Online con seguimiento", desc: "Plan adaptado y seguimiento sin depender de un lugar físico." },
+      { id: "presencial", label: "Presencial en Tavernes de la Valldigna", desc: "Entrena conmigo en persona con acompañamiento directo." },
+      { id: "online", label: "Online con seguimiento", desc: "Plan adaptado sin depender de un lugar físico." },
       { id: "flexible", label: "La mejor opción para mí", desc: "Prefiero que me recomiendes según mi caso." },
     ],
   },
@@ -52,7 +42,7 @@ function CheckIcon() {
       height="18"
       viewBox="0 0 24 24"
       fill="none"
-      stroke={colors.accent}
+      stroke="#CCFF00"
       strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -63,11 +53,25 @@ function CheckIcon() {
   );
 }
 
-export default function QuickQualifier({
-  onComplete,
-}: {
-  onComplete?: (answers: Record<string, string>) => void;
-}) {
+function DownArrowIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#CCFF00"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+export default function QuickQualifier({ onComplete }: { onComplete?: (answers: Record<string, string>) => void }) {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [done, setDone] = useState(false);
@@ -88,7 +92,6 @@ export default function QuickQualifier({
       setTimeout(() => {
         setDone(true);
         setTransitioning(false);
-
         if (onComplete) {
           const result: Record<string, string> = {};
           steps.forEach((step, i) => {
@@ -117,40 +120,29 @@ export default function QuickQualifier({
     }
   };
 
-  const scrollToMoreContent = () => {
-    window.scrollBy({
-      top: Math.round(window.innerHeight * 0.72),
-      behavior: "smooth",
-    });
+  const scrollToBenefits = () => {
+    const el = document.getElementById("benefits-section");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   if (done) {
     return (
       <section
-        className="relative min-h-[85vh] flex flex-col items-center justify-center px-5 py-8 pb-16"
-        style={{ backgroundColor: colors.bg }}
+        className="min-h-[85vh] flex flex-col items-center justify-center px-5 py-8"
+        style={{ backgroundColor: "#0A0E1A" }}
       >
         <div className="max-w-md w-full flex flex-col items-center gap-4 text-center">
-          <p
-            className="text-[11px] font-bold tracking-[0.18em] uppercase"
-            style={{ color: colors.accent }}
-          >
-            Entrenamiento personal
-          </p>
+          <p className="text-[#CCFF00] text-[11px] font-bold tracking-[0.18em] uppercase">PrietoTrainer</p>
 
-          <div
-            className="w-14 h-14 rounded-full flex items-center justify-center"
-            style={{
-              backgroundColor: colors.accent,
-              boxShadow: "0 0 18px rgba(200,164,93,0.18)",
-            }}
-          >
+          <div className="w-14 h-14 rounded-full bg-[#CCFF00] flex items-center justify-center shadow-[0_0_18px_rgba(204,255,0,0.18)]">
             <svg
               width="28"
               height="28"
               viewBox="0 0 24 24"
               fill="none"
-              stroke={colors.bg}
+              stroke="#0A0E1A"
               strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -160,101 +152,44 @@ export default function QuickQualifier({
             </svg>
           </div>
 
-          <div className="space-y-2 w-full">
-            <p
-              className="text-xs uppercase tracking-[0.16em]"
-              style={{ color: colors.textMuted }}
-            >
-              Tus respuestas
-            </p>
-
+          <div className="space-y-2">
+            <p className="text-xs text-[#B0B0B0] uppercase tracking-[0.16em]">Tus respuestas</p>
             <div className="w-full space-y-2 text-left">
               {answers.map((answer, index) => (
                 <div
                   key={`${summaryLabels[index]}-${answer}`}
-                  className="flex items-center justify-between gap-3 rounded-xl px-4 py-3"
-                  style={{
-                    border: `1px solid ${colors.border}`,
-                    backgroundColor: colors.card,
-                  }}
+                  className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3"
                 >
-                  <span
-                    className="text-xs font-semibold uppercase tracking-[0.12em]"
-                    style={{ color: colors.textMuted }}
-                  >
+                  <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[#B0B0B0]">
                     {summaryLabels[index]}
                   </span>
-
-                  <span
-                    className="text-sm font-semibold text-right"
-                    style={{ color: colors.accent }}
-                  >
-                    {getLabel(index, answer)}
-                  </span>
+                  <span className="text-sm font-semibold text-[#CCFF00] text-right">{getLabel(index, answer)}</span>
                 </div>
               ))}
             </div>
           </div>
 
           <div className="space-y-1">
-            <p className="text-lg font-bold" style={{ color: colors.text }}>
-              Perfecto. Ya tengo una idea de lo que puede encajar contigo.
-            </p>
-            <p className="text-sm" style={{ color: colors.textMuted }}>
-              Ahora te enseño cómo sería el proceso para ayudarte.
-            </p>
+            <p className="text-white text-lg font-bold">Perfecto. Ya sé qué puede encajar contigo.</p>
+            <p className="text-[#B0B0B0] text-sm">Ahora te enseño cómo puedo ayudarte a conseguirlo.</p>
           </div>
 
           <button
             onClick={scrollToNextSection}
-            className="w-full max-w-xs py-4 rounded-xl font-bold text-base cursor-pointer border-none mt-2 transition-transform duration-200 hover:scale-[1.01]"
-            style={{
-              backgroundColor: colors.accent,
-              color: colors.bg,
-              boxShadow: "0 0 20px rgba(200,164,93,0.15)",
-            }}
+            className="w-full max-w-xs py-4 rounded-xl font-bold text-base cursor-pointer border-none bg-[#CCFF00] text-[#0A0E1A] mt-2 shadow-[0_0_20px_rgba(204,255,0,0.15)] transition-transform duration-200 hover:scale-[1.01]"
           >
             Reserva tu valoración gratuita
           </button>
 
           <a
-            href="https://wa.me/34XXXXXXXXX"
+            href="https://wa.me/34665385628"
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full max-w-xs py-3 rounded-xl font-semibold text-center no-underline text-sm transition-colors"
-            style={{
-              color: colors.textMuted,
-              border: `1px solid ${colors.border}`,
-              backgroundColor: "rgba(255,255,255,0.02)",
-            }}
+            className="block w-full max-w-xs py-3 rounded-xl font-semibold text-center no-underline text-[#B0B0B0] text-sm border border-white/15 bg-white/[0.02] hover:border-white/25 transition-colors"
           >
             Escríbeme por WhatsApp
           </a>
         </div>
-
-        <button
-          type="button"
-          onClick={scrollToMoreContent}
-          aria-label="Ver más contenido"
-          className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-xs opacity-80 hover:opacity-100 transition-opacity"
-          style={{ color: colors.textMuted }}
-        >
-          <span className="uppercase tracking-[0.14em]">Ver más</span>
-          <svg
-            className="animate-bounce"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke={colors.accent}
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </button>
       </section>
     );
   }
@@ -263,59 +198,37 @@ export default function QuickQualifier({
 
   return (
     <section
-      className="relative min-h-[85vh] flex flex-col items-center justify-start px-5 pt-5 pb-16"
-      style={{ backgroundColor: colors.bg }}
+      className="min-h-[85vh] flex flex-col items-center justify-start px-5 pt-5 pb-8"
+      style={{ backgroundColor: "#0A0E1A" }}
     >
       <div className="max-w-md w-full flex flex-col items-center gap-2.5">
-        <p
-          className="text-[11px] font-bold tracking-[0.18em] uppercase"
-          style={{ color: colors.accent }}
-        >
-          Entrenamiento personal
-        </p>
+        <p className="text-[#CCFF00] text-[11px] font-bold tracking-[0.18em] uppercase">PrietoTrainer</p>
 
-        <h1
-          className="text-lg md:text-xl font-extrabold leading-snug text-center max-w-sm"
-          style={{ color: colors.text }}
-        >
-          Entrenamiento personal adaptado a tu objetivo, tu nivel y tu rutina
+        <h1 className="text-lg md:text-xl font-extrabold text-white leading-snug text-center max-w-sm">
+          Gana músculo y pierde grasa con entrenamiento, nutrición y seguimiento real
         </h1>
 
-        <p
-          className="text-xs text-center leading-relaxed max-w-sm"
-          style={{ color: colors.textMuted }}
-        >
-          Pensado para personas con poco tiempo que quieren resultados sin hacerlo extremo.
+        <p className="text-[#B0B0B0] text-xs text-center leading-relaxed max-w-sm">
+          Resultados entrenando solo 2 días/semana. Presencial en Tavernes de la Valldigna u Online con seguimiento.
         </p>
 
         <div className="flex gap-2 mt-1">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="h-1 rounded-full transition-all duration-300"
-              style={{
-                width: i <= currentStep ? "56px" : "40px",
-                backgroundColor: i <= currentStep ? colors.accent : "rgba(255,255,255,0.10)",
-              }}
+              className={`h-1 rounded-full transition-all duration-300 ${i <= currentStep ? "bg-[#CCFF00] w-14" : "bg-white/10 w-10"
+                }`}
             />
           ))}
         </div>
 
-        <p className="text-xs" style={{ color: colors.textMuted }}>
-          Paso {currentStep + 1} de 3
-        </p>
+        <p className="text-xs text-[#B0B0B0]">Paso {currentStep + 1} de 3</p>
 
-        <h2
-          className="text-base md:text-lg font-bold text-center mt-1"
-          style={{ color: colors.text }}
-        >
-          {step.title}
-        </h2>
+        <h2 className="text-base md:text-lg font-bold text-white text-center mt-1">{step.title}</h2>
 
         <div
-          className={`w-full flex flex-col gap-2 transition-opacity duration-200 ${
-            transitioning ? "opacity-60" : "opacity-100"
-          }`}
+          className={`w-full flex flex-col gap-2 transition-opacity duration-200 ${transitioning ? "opacity-60" : "opacity-100"
+            }`}
         >
           {step.options.map((option) => {
             const isSelected = answers[currentStep] === option.id;
@@ -324,57 +237,36 @@ export default function QuickQualifier({
               <button
                 key={option.id}
                 onClick={() => !transitioning && handleSelect(option.id)}
-                className="w-full text-left px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 flex items-center gap-3"
-                style={{
-                  border: isSelected
-                    ? `1px solid ${colors.accent}`
-                    : `1px solid ${colors.border}`,
-                  backgroundColor: isSelected ? "rgba(200,164,93,0.10)" : colors.card,
-                  boxShadow: isSelected ? "0 0 15px rgba(200,164,93,0.12)" : "none",
-                }}
+                className={`w-full text-left px-4 py-3 rounded-xl border cursor-pointer transition-all duration-200 flex items-center gap-3 ${isSelected
+                    ? "border-[#CCFF00] bg-[#CCFF00]/10 shadow-[0_0_15px_rgba(204,255,0,0.12)]"
+                    : "border-white/10 bg-white/5 hover:border-white/20 hover:bg-white/[0.07]"
+                  }`}
                 aria-pressed={isSelected}
               >
                 <div className="flex-1">
-                  <p
-                    className="font-semibold text-sm"
-                    style={{ color: isSelected ? colors.accent : colors.text }}
-                  >
+                  <p className={`font-semibold text-sm ${isSelected ? "text-[#CCFF00]" : "text-white"}`}>
                     {option.label}
                   </p>
-                  <p className="text-xs mt-0.5" style={{ color: colors.textMuted }}>
-                    {option.desc}
-                  </p>
+                  <p className="text-xs text-[#B0B0B0] mt-0.5">{option.desc}</p>
                 </div>
                 {isSelected && <CheckIcon />}
               </button>
             );
           })}
         </div>
-      </div>
 
-      <button
-        type="button"
-        onClick={scrollToMoreContent}
-        aria-label="Ver más contenido"
-        className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-xs opacity-80 hover:opacity-100 transition-opacity"
-        style={{ color: colors.textMuted }}
-      >
-        <span className="uppercase tracking-[0.14em]">Ver más</span>
-        <svg
-          className="animate-bounce"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke={colors.accent}
-          strokeWidth="2.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
+        <button
+          type="button"
+          onClick={scrollToBenefits}
+          aria-label="Ver más contenido"
+          className="pt-4 flex flex-col items-center gap-1 bg-transparent border-none cursor-pointer"
         >
-          <path d="M6 9l6 6 6-6" />
-        </svg>
-      </button>
+          <span className="text-[#8F97A6] text-xs tracking-[0.22em] uppercase">Ver más</span>
+          <div className="animate-bounce">
+            <DownArrowIcon />
+          </div>
+        </button>
+      </div>
     </section>
   );
 }
