@@ -32,33 +32,18 @@ const items = [
 ];
 
 export default function FAQ() {
-    const colors = {
-        bg: "#11151B",
-        card: "#171B22",
-        border: "#2E3643",
-        text: "#F5F7FA",
-        textMuted: "#B8C0CC",
-        accent: "#C8A45D",
-    };
-
     return (
         <section
             className="px-6 py-12 md:py-16"
-            style={{ backgroundColor: colors.bg }}
+            style={{ backgroundColor: "#09111F" }}
         >
             <div className="max-w-4xl mx-auto">
                 <div className="max-w-2xl mx-auto text-center mb-10 md:mb-12">
-                    <p
-                        className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3"
-                        style={{ color: colors.accent }}
-                    >
+                    <p className="text-[#CCFF00] text-[11px] font-bold tracking-[0.18em] uppercase mb-3">
                         Preguntas frecuentes
                     </p>
 
-                    <h2
-                        className="text-3xl md:text-4xl font-extrabold leading-tight"
-                        style={{ color: colors.text }}
-                    >
+                    <h2 className="text-3xl md:text-4xl font-extrabold leading-tight text-white">
                         Resolvemos las dudas más habituales antes de empezar
                     </h2>
                 </div>
@@ -67,31 +52,18 @@ export default function FAQ() {
                     {items.map((item) => (
                         <details
                             key={item.question}
-                            className="group rounded-2xl p-5 md:p-6"
-                            style={{
-                                border: `1px solid ${colors.border}`,
-                                backgroundColor: colors.card,
-                            }}
+                            className="group rounded-2xl p-5 md:p-6 border border-white/10 bg-white/[0.04]"
                         >
                             <summary className="list-none cursor-pointer flex items-center justify-between gap-4">
-                                <span
-                                    className="font-bold text-base md:text-lg"
-                                    style={{ color: colors.text }}
-                                >
+                                <span className="font-bold text-base md:text-lg text-white">
                                     {item.question}
                                 </span>
-                                <span
-                                    className="text-xl transition-transform group-open:rotate-45"
-                                    style={{ color: colors.accent }}
-                                >
+                                <span className="text-xl transition-transform group-open:rotate-45 text-[#CCFF00]">
                                     +
                                 </span>
                             </summary>
 
-                            <p
-                                className="text-sm md:text-base leading-relaxed mt-4 pr-6"
-                                style={{ color: colors.textMuted }}
-                            >
+                            <p className="text-sm md:text-base leading-relaxed mt-4 pr-6 text-[#B0B0B0]">
                                 {item.answer}
                             </p>
                         </details>

@@ -1,38 +1,23 @@
 import Link from "next/link";
 
 export default function GraciasPage() {
-    const colors = {
-        bg: "#0F1115",
-        card: "#171B22",
-        border: "#2E3643",
-        text: "#F5F7FA",
-        textMuted: "#B8C0CC",
-        accent: "#C8A45D",
-    };
-
     return (
         <main
             className="min-h-screen px-6 py-16 flex items-center justify-center"
-            style={{ backgroundColor: colors.bg }}
+            style={{ backgroundColor: "#0A0E1A" }}
         >
             <div className="max-w-xl w-full text-center flex flex-col items-center gap-5">
-                <p
-                    className="text-[11px] font-bold tracking-[0.18em] uppercase"
-                    style={{ color: colors.accent }}
-                >
-                    Momentum Coach
+                <p className="text-[#CCFF00] text-[11px] font-bold tracking-[0.18em] uppercase">
+                    PrietoTrainer
                 </p>
 
-                <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center shadow-[0_0_18px_rgba(200,164,93,0.18)]"
-                    style={{ backgroundColor: colors.accent }}
-                >
+                <div className="w-14 h-14 rounded-full bg-[#CCFF00] flex items-center justify-center shadow-[0_0_18px_rgba(204,255,0,0.18)]">
                     <svg
                         width="28"
                         height="28"
                         viewBox="0 0 24 24"
                         fill="none"
-                        stroke={colors.bg}
+                        stroke="#0A0E1A"
                         strokeWidth="3"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -42,52 +27,32 @@ export default function GraciasPage() {
                     </svg>
                 </div>
 
-                <h1
-                    className="text-3xl md:text-4xl font-extrabold leading-tight"
-                    style={{ color: colors.text }}
-                >
-                    Gracias, he recibido tu solicitud
+                <h1 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                    Gracias. He recibido tu solicitud
                 </h1>
 
-                <p
-                    className="text-base md:text-lg leading-relaxed max-w-lg"
-                    style={{ color: colors.textMuted }}
-                >
-                    Revisaré tu mensaje y te responderé lo antes posible para orientarte
-                    según tu objetivo.
-                </p>
-
-                <p
-                    className="text-sm leading-relaxed max-w-lg"
-                    style={{ color: colors.textMuted }}
-                >
-                    Esta página forma parte de una demo genérica de landing para
-                    entrenador personal.
+                <p className="text-[#B0B0B0] text-base md:text-lg leading-relaxed max-w-lg">
+                    Este es el punto donde después conectaremos el flujo real del
+                    formulario. De momento, la demo ya tiene completado el recorrido
+                    básico.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-3 pt-2">
                     <Link
                         href="/"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-base no-underline"
-                        style={{
-                            backgroundColor: colors.accent,
-                            color: colors.bg,
-                        }}
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-base no-underline bg-[#CCFF00] text-[#0A0E1A]"
                     >
                         Volver al inicio
                     </Link>
 
-                    <Link
-                        href="/#cta-final"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm no-underline"
-                        style={{
-                            color: colors.textMuted,
-                            border: `1px solid ${colors.border}`,
-                            backgroundColor: colors.card,
-                        }}
+                    <a
+                        href="https://wa.me/34665385628"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold text-sm no-underline text-[#B0B0B0] border border-white/15 bg-white/[0.02]"
                     >
-                        Volver al formulario
-                    </Link>
+                        Escribirme por WhatsApp
+                    </a>
                 </div>
             </div>
         </main>

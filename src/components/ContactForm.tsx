@@ -4,14 +4,14 @@ import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const colors = {
-  bg: "#0F1115",
-  card: "#171B22",
-  input: "#11151B",
-  border: "#2E3643",
-  text: "#F5F7FA",
-  textMuted: "#B8C0CC",
-  placeholder: "#7F8794",
-  accent: "#C8A45D",
+  bg: "#0A0E1A",
+  card: "rgba(255,255,255,0.04)",
+  input: "rgba(255,255,255,0.03)",
+  border: "rgba(255,255,255,0.10)",
+  text: "#FFFFFF",
+  textMuted: "#B0B0B0",
+  placeholder: "#8F97A6",
+  accent: "#CCFF00",
 };
 
 const objectiveMap: Record<string, string> = {
@@ -80,8 +80,8 @@ export default function ContactForm({
           <div
             className="rounded-xl px-4 py-3 mb-1"
             style={{
-              border: `1px solid rgba(200, 164, 93, 0.25)`,
-              backgroundColor: "rgba(200, 164, 93, 0.08)",
+              border: "1px solid rgba(204, 255, 0, 0.25)",
+              backgroundColor: "rgba(204, 255, 0, 0.08)",
             }}
           >
             <p
@@ -92,6 +92,13 @@ export default function ContactForm({
             </p>
           </div>
         )}
+
+        <p
+          className="text-sm text-center"
+          style={{ color: colors.textMuted }}
+        >
+          Solo te llevará 1 minuto.
+        </p>
 
         <div>
           <label
@@ -203,20 +210,13 @@ export default function ContactForm({
           />
         </div>
 
-        <p
-          className="text-xs text-center"
-          style={{ color: colors.textMuted }}
-        >
-          Solo te llevará 1 minuto.
-        </p>
-
         <button
           type="submit"
           className="w-full py-4 rounded-xl font-bold text-base border-none cursor-pointer"
           style={{
             backgroundColor: colors.accent,
             color: colors.bg,
-            boxShadow: "0 0 20px rgba(200,164,93,0.18)",
+            boxShadow: "0 0 20px rgba(204,255,0,0.15)",
           }}
         >
           Reservar mi valoración gratuita
@@ -226,7 +226,7 @@ export default function ContactForm({
           className="text-xs leading-relaxed text-center"
           style={{ color: colors.textMuted }}
         >
-          Demo de formulario: al enviar se muestra la página de confirmación.
+          Te responderé personalmente para orientarte según tu objetivo y tu situación.
         </p>
       </div>
     </form>

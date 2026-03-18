@@ -1,14 +1,4 @@
 export default function Programs() {
-    const colors = {
-        bg: "#0F1115",
-        card: "#171B22",
-        cardAlt: "#1D232D",
-        border: "#2E3643",
-        text: "#F5F7FA",
-        textMuted: "#B8C0CC",
-        accent: "#C8A45D",
-    };
-
     const programs = [
         {
             title: "Entrenamiento presencial",
@@ -21,6 +11,7 @@ export default function Programs() {
                 "Ajustes según evolución",
                 "Ideal si valoras supervisión directa",
             ],
+            highlight: true,
         },
         {
             title: "Seguimiento online",
@@ -33,6 +24,7 @@ export default function Programs() {
                 "Seguimiento y revisiones",
                 "Ideal si necesitas flexibilidad",
             ],
+            highlight: false,
         },
         {
             title: "Plan híbrido",
@@ -45,71 +37,51 @@ export default function Programs() {
                 "Ajustes periódicos",
                 "Ideal si quieres equilibrio y seguimiento",
             ],
+            highlight: false,
         },
     ];
 
     return (
         <section
             className="px-6 py-16 md:py-20"
-            style={{ backgroundColor: colors.bg }}
+            style={{ backgroundColor: "#0A0E1A" }}
         >
             <div className="max-w-6xl mx-auto">
                 <div className="max-w-2xl mx-auto text-center mb-10 md:mb-12">
-                    <p
-                        className="text-[11px] font-bold tracking-[0.18em] uppercase mb-3"
-                        style={{ color: colors.accent }}
-                    >
+                    <p className="text-[#CCFF00] text-[11px] font-bold tracking-[0.18em] uppercase mb-3">
                         Servicios
                     </p>
 
-                    <h2
-                        className="text-3xl md:text-4xl font-extrabold leading-tight"
-                        style={{ color: colors.text }}
-                    >
+                    <h2 className="text-3xl md:text-4xl font-extrabold text-white leading-tight">
                         Elige la modalidad que mejor encaje contigo
                     </h2>
 
-                    <p
-                        className="text-base md:text-lg leading-relaxed mt-4"
-                        style={{ color: colors.textMuted }}
-                    >
+                    <p className="text-[#B0B0B0] text-base md:text-lg leading-relaxed mt-4">
                         La base siempre es la misma: entrenamiento, nutrición y seguimiento.
                         Lo que cambia es el formato que mejor encaja contigo y con tu rutina.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                    {programs.map((program, index) => (
+                    {programs.map((program) => (
                         <div
                             key={program.title}
-                            className="rounded-2xl p-6 md:p-7"
-                            style={{
-                                border: `1px solid ${index === 0 ? colors.accent : colors.border}`,
-                                backgroundColor: index === 0 ? colors.cardAlt : colors.card,
-                                boxShadow:
-                                    index === 0 ? "0 0 20px rgba(200,164,93,0.08)" : "none",
-                            }}
+                            className={`rounded-2xl p-6 md:p-7 border ${program.highlight
+                                    ? "border-[#CCFF00]/35 bg-[#CCFF00]/[0.05]"
+                                    : "border-white/10 bg-white/[0.04]"
+                                }`}
                         >
                             <div className="mb-4">
-                                <p
-                                    className="text-xs font-bold tracking-[0.16em] uppercase mb-2"
-                                    style={{ color: colors.accent }}
-                                >
+                                <p className="text-[#CCFF00] text-xs font-bold tracking-[0.16em] uppercase mb-2">
                                     {program.subtitle}
                                 </p>
 
-                                <h3
-                                    className="text-2xl font-bold leading-tight"
-                                    style={{ color: colors.text }}
-                                >
+                                <h3 className="text-white text-2xl font-bold leading-tight">
                                     {program.title}
                                 </h3>
                             </div>
 
-                            <p
-                                className="text-sm md:text-base leading-relaxed mb-5"
-                                style={{ color: colors.textMuted }}
-                            >
+                            <p className="text-[#B0B0B0] text-sm md:text-base leading-relaxed mb-5">
                                 {program.description}
                             </p>
 
@@ -117,13 +89,9 @@ export default function Programs() {
                                 {program.bullets.map((bullet) => (
                                     <li
                                         key={bullet}
-                                        className="flex items-start gap-3 text-sm md:text-base"
-                                        style={{ color: colors.text }}
+                                        className="flex items-start gap-3 text-sm md:text-base text-[#E5E7EB]"
                                     >
-                                        <span
-                                            className="mt-2 w-2 h-2 rounded-full shrink-0"
-                                            style={{ backgroundColor: colors.accent }}
-                                        />
+                                        <span className="mt-2 w-2 h-2 rounded-full bg-[#CCFF00] shrink-0" />
                                         <span>{bullet}</span>
                                     </li>
                                 ))}
@@ -133,12 +101,9 @@ export default function Programs() {
                 </div>
 
                 <div className="max-w-2xl mx-auto text-center mt-10">
-                    <p
-                        className="text-sm md:text-base leading-relaxed"
-                        style={{ color: colors.textMuted }}
-                    >
+                    <p className="text-[#B0B0B0] text-sm md:text-base leading-relaxed">
                         No hace falta decidirlo todo ahora. En la valoración inicial se puede
-                        ver qué opción tiene más sentido para tu caso.
+                        ver qué opción tiene más sentido para ti.
                     </p>
                 </div>
             </div>

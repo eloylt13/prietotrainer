@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0F1115;
-  --bg-alt: #11151B;
-  --accent: #C8A45D;
-  --text-light: #F5F7FA;
-  --text-dark: #111111;
-  --text-muted: #B8C0CC;
+  --bg-primary: #0A0E1A;
+  --bg-alt: #0A0E1A;
+  --accent: #CCFF00;
+  --text-light: #FFFFFF;
+  --text-dark: #0A0E1A;
+  --text-muted: #B0B0B0;
 }
 
 html {
@@ -21,5 +21,5 @@ body {
 
 ::selection {
   background-color: var(--accent);
-  color: #111111;
+  color: var(--text-dark);
 }
