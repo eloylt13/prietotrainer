@@ -63,8 +63,8 @@ export default function SocialProof() {
                         <div
                             key={`${item.name}-${index}`}
                             className={`rounded-2xl border p-6 md:p-7 ${index === 0
-                                    ? "border-[#CCFF00]/25 bg-[#CCFF00]/[0.04]"
-                                    : "border-white/10 bg-white/[0.04]"
+                                ? "border-[#CCFF00]/25 bg-[#CCFF00]/[0.04]"
+                                : "border-white/10 bg-white/[0.04]"
                                 }`}
                         >
                             <div className="mb-4">
@@ -89,7 +89,7 @@ export default function SocialProof() {
                                 Antes y después real
                             </p>
                             <h3 className="text-white text-xl font-bold mb-2">
-                                Cambio físico compartido con permiso
+                                Cambio físico espectacular de María con 65 años
                             </h3>
                             <p className="text-[#B0B0B0] text-sm md:text-base leading-relaxed">
                                 Un ejemplo visual de progreso cuando hay constancia, seguimiento y
