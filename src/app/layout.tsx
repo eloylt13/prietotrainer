@@ -43,6 +43,21 @@ export default function RootLayout({
     <html lang="es" className={inter.variable}>
       <body className="font-sans antialiased">
         {children}
+        <footer style={{ borderTop: "1px solid #e5e7eb", padding: "1.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <img src="/logo-iamagica.png" alt="IAMagica" style={{ height: "28px", width: "auto" }} />
+              <span style={{ fontSize: "12px", color: "#9ca3af", marginTop: "4px" }}>© 2026 IAMagica</span>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
+              <span style={{ fontSize: "12px", fontWeight: 600, color: "#1B4332", letterSpacing: "0.5px" }}>DIGITALIZA TU NEGOCIO</span>
+              <a href="mailto:info@iamagica.es" style={{ textDecoration: "none", color: "#6b7280", display: "flex", alignItems: "center", gap: "6px", marginTop: "4px" }}>
+                <span style={{ fontSize: "20px" }}>✉</span>
+                <span style={{ fontSize: "14px" }}>info@iamagica.es</span>
+              </a>
+            </div>
+          </div>
+        </footer>
         <Analytics />
       </body>
     </html>
